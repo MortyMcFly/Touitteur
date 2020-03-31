@@ -16,20 +16,21 @@
         <!-- Place new controls here -->
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical">
-                <ContentView>
+                <ContentView x:Name="LoginView" IsVisible="True">
                     <StackLayout VerticalOptions="EndAndExpand">
                         <Label Text="Connexion à Touitteur" HorizontalOptions="CenterAndExpand"/>
-                        <Entry Placeholder="Identifiant"/>
-                        <Entry Placeholder="Mot de passe"/>
+                        <Entry x:Name="InputPseudo" Placeholder="Identifiant"/>
+                        <Entry x:Name="InputPassword" Placeholder="Mot de passe" IsPassword="True" />
                         <StackLayout Orientation="Horizontal">
-                            <Switch Margin="10,0,5,0" HorizontalOptions="Start"/>
+                            <Switch x:Name="SwitchSaveIds" Margin="10,0,5,0" HorizontalOptions="Start"/>
                             <Label Text="Mémoriser mes informations" HorizontalOptions="End" VerticalOptions="Center"/>
                         </StackLayout>
-                        <Button Text="Connexion"/>
+                        <Button x:Name="BtnConnection" Clicked="BtnConnection_Clicked" Text="Connexion"/>
+                        <Label x:Name="ErrorMessage" Text="" TextColor="Red" />
                     </StackLayout>
                 </ContentView>
                 <!--#region Touitte-->
-                <ContentView>
+                <ContentView x:Name="TouitteView" IsVisible="False">
                     <StackLayout Padding="10"  Orientation="Vertical">
                         <StackLayout Orientation="Horizontal">
                             <Image BackgroundColor="Black" Source="https://picsum.photos/50/50/?random" Aspect="Fill" WidthRequest="75" />

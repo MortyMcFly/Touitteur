@@ -17,5 +17,31 @@ namespace Touitteur
         {
             InitializeComponent();
         }
+
+        private void BtnConnection_Clicked(object sender, EventArgs e)
+        {
+            Console.WriteLine("Clicked !!!");
+
+            if (string.IsNullOrEmpty(InputPseudo.Text) || string.IsNullOrEmpty(InputPassword.Text))
+            {
+                ErrorMessage.Text = "Merci de saisir un identifiant et un mot de passe stp";
+            }
+
+            else if (InputPseudo.Text.Length < 3)
+            {
+                ErrorMessage.Text = "Identifiant trop couuuurt !";
+            }
+
+            else if (InputPassword.Text.Length < 6)
+            {
+                ErrorMessage.Text = "Mot de passe trop couuuurt !";
+            }
+
+            else
+            {
+                LoginView.IsVisible = false;
+                TouitteView.IsVisible = true;
+            }
+        }
     }
 }
