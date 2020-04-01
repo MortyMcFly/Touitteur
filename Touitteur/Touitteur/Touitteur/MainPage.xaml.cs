@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Touitteur.Models;
 using Touitteur.Services;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace Touitteur
 {
@@ -30,7 +31,12 @@ namespace Touitteur
         {
             Console.WriteLine("Clicked !!!");
 
-            if (string.IsNullOrEmpty(InputPseudo.Text) || string.IsNullOrEmpty(InputPassword.Text))
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                ErrorMessage.Text = "Veuillez vous connecter aux internets";
+            }
+
+            else if (string.IsNullOrEmpty(InputPseudo.Text) || string.IsNullOrEmpty(InputPassword.Text))
             {
                 ErrorMessage.Text = "Merci de saisir un identifiant et un mot de passe stp";
             }
