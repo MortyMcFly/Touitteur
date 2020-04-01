@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Touitteur.Models;
+using Touitteur.Services;
 using Xamarin.Forms;
 
 namespace Touitteur
@@ -13,9 +15,15 @@ namespace Touitteur
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        private ITouitteurService touitteurService;
+        public List<Touitte> Touittes { get; private set; }
+
         public MainPage()
         {
             InitializeComponent();
+            touitteurService = TouitteurService.GetInstance();
+            Touittes = touitteurService.GetTouittes("");
+            TouitteList.ItemsSource = Touittes;
         }
 
         private void BtnConnection_Clicked(object sender, EventArgs e)
@@ -37,10 +45,15 @@ namespace Touitteur
                 ErrorMessage.Text = "Mot de passe trop couuuurt !";
             }
 
-            else
+            else if (touitteurService.Authenticate(InputPseudo.Text, InputPassword.Text))
             {
                 LoginView.IsVisible = false;
-                TouitteView.IsVisible = true;
+                TouitteList.IsVisible = true;
+            }
+
+            else
+            {
+                ErrorMessage.Text = "Identifiant ou mot de passe incorrect cheh";
             }
         }
     }

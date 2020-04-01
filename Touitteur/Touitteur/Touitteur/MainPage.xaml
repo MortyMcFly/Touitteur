@@ -30,22 +30,28 @@
                     </StackLayout>
                 </ContentView>
                 <!--#region Touitte-->
-                <ContentView x:Name="TouitteView" IsVisible="False">
-                    <StackLayout Padding="10"  Orientation="Vertical">
-                        <StackLayout Orientation="Horizontal">
-                            <Image BackgroundColor="Black" Source="https://picsum.photos/50/50/?random" Aspect="Fill" WidthRequest="75" />
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="@MortyMcFly Morty à 15:47" />
-                                <Label Text="Bonjour, ceci est mon premier touitte je suis très content de rejoindre cette communauté si particulière ! Amicalement." />
-                            </StackLayout>
-                        </StackLayout>
-                        <StackLayout HeightRequest="25" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="End">
-                            <ImageButton VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.reply.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
-                            <ImageButton VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.retweet.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
-                            <ImageButton VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.favorite.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
-                        </StackLayout>
-                    </StackLayout>
-                </ContentView>
+                <ListView x:Name="TouitteList" IsVisible="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10"  Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image BackgroundColor="Black" Source="https://picsum.photos/50/50/?random" Aspect="Fill" WidthRequest="75" />
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding TouitteInfo}" />
+                                            <Label Text="{Binding Text}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout HeightRequest="25" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="End">
+                                        <ImageButton VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.reply.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
+                                        <ImageButton VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.retweet.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
+                                        <ImageButton VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.favorite.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <!--#endregion-->
             </StackLayout>
         </ScrollView>
