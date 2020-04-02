@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utils="clr-namespace:Touitteur.Utils"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Touitteur.TouittesList">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" BackgroundColor="#58B0F0" Padding="10,25" HorizontalOptions="Fill" VerticalOptions="Start" Visual="Default">
+                <ImageButton HorizontalOptions="Start" Source="{utils:ImageFromResources Touitteur.Images.pencil.png}" Aspect="Fill" HeightRequest="20" WidthRequest="20" BackgroundColor="#58B0F0" />
+                <Label HorizontalOptions="CenterAndExpand" TextColor="White" Text="Liste des touittes" FontAttributes="Bold" FontSize="20" />
+                <ImageButton HorizontalOptions="End" Source="{utils:ImageFromResources Touitteur.Images.search.png}" Aspect="Fill" HeightRequest="20" WidthRequest="20" BackgroundColor="#58B0F0" />
+            </StackLayout>
+            <ListView x:Name="TouitteList" ItemSelected="TouitteList_ItemSelected" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10"  Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image BackgroundColor="Black" Source="https://picsum.photos/50/50/?random" Aspect="Fill" WidthRequest="75" />
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding TouitteInfo}" />
+                                        <Label Text="{Binding Text}" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout HeightRequest="25" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="End">
+                                    <ImageButton Padding="5" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.reply.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
+                                    <ImageButton Padding="5" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.retweet.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
+                                    <ImageButton Padding="5" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.favorite.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

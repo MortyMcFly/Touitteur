@@ -17,7 +17,7 @@
         <!-- Place new controls here -->
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical">
-                <ContentView x:Name="LoginView" IsVisible="True">
+                <ContentView x:Name="LoginView">
                     <StackLayout VerticalOptions="EndAndExpand">
                         <Label Text="Connexion à Touitteur" HorizontalOptions="CenterAndExpand"/>
                         <Entry x:Name="InputPseudo" Placeholder="Identifiant"/>
@@ -30,30 +30,6 @@
                         <Label x:Name="ErrorMessage" Text="" TextColor="Red" />
                     </StackLayout>
                 </ContentView>
-                <!--#region Touitte-->
-                <ListView x:Name="TouitteList" IsVisible="False" ItemSelected="TouitteList_ItemSelected" HasUnevenRows="True">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Padding="10"  Orientation="Vertical">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Image BackgroundColor="Black" Source="https://picsum.photos/50/50/?random" Aspect="Fill" WidthRequest="75" />
-                                        <StackLayout Orientation="Vertical">
-                                            <Label Text="{Binding TouitteInfo}" />
-                                            <Label Text="{Binding Text}" />
-                                        </StackLayout>
-                                    </StackLayout>
-                                    <StackLayout HeightRequest="25" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="End">
-                                        <ImageButton Padding="5" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.reply.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
-                                        <ImageButton Padding="5" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.retweet.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
-                                        <ImageButton Padding="5" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Source="{utils:ImageFromResources Touitteur.Images.favorite.png}" Aspect="Fill" WidthRequest="25" BackgroundColor="Gray"/>
-                                    </StackLayout>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <!--#endregion-->
             </StackLayout>
         </ScrollView>
 
