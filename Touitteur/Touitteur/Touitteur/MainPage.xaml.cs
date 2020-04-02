@@ -23,8 +23,6 @@ namespace Touitteur
         {
             InitializeComponent();
             touitteurService = TouitteurService.GetInstance();
-            Touittes = touitteurService.GetTouittes("");
-            TouitteList.ItemsSource = Touittes;
         }
 
         private void BtnConnection_Clicked(object sender, EventArgs e)
@@ -53,6 +51,8 @@ namespace Touitteur
 
             else if (touitteurService.Authenticate(InputPseudo.Text, InputPassword.Text))
             {
+                Touittes = touitteurService.GetTouittes("");
+                TouitteList.ItemsSource = Touittes;
                 LoginView.IsVisible = false;
                 TouitteList.IsVisible = true;
             }
@@ -61,6 +61,12 @@ namespace Touitteur
             {
                 ErrorMessage.Text = "Identifiant ou mot de passe incorrect cheh";
             }
+        }
+
+        private async void TouitteList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var touitte = (Touitte)TouitteList.SelectedItem;
+            await Navigation.PushAsync(new Detail(touitte));
         }
     }
 }
